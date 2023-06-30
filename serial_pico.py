@@ -1,39 +1,9 @@
 import serial
-import asyncio
-from serial.serialutil import SerialException
-from time import sleep
 
-class SerialSender:
-    TERMINATOR = '\n'.encode('UTF8')
+ser = serial.Serial('/dev/ttyUSB0', 115200)  # Open the serial connection
 
-    def __init__(self, device='/dev/ttyACM0', baud=115200, timeout=1):
-        self.serial = serial.Serial(device, baud, timeout=timeout)
+duty_cycle = 75  # The duty cycle value (0-100)
+data_to_send = str(duty_cycle)  # Convert the duty cycle to a string
+ser.write(data_to_send.encode())  # Send the data over the serial connection
 
-    def receive(self) -> str:
-        line = self.serial.read_until(self.TERMINATOR)
-        return line.decode('UTF8').strip()
-
-    def send(self, text: str):
-        line = '%s\n' % text
-        self.serial.write(line.encode('UTF8'))
-
-    def close(self):
-        self.serial.close()
-
-
-if __name__ == '__main__':
-
-    previous_media_info = None
-    
-    while True:
-            
-            # recreate the serial each time to allow handling disconnection
-            try:
-                serial_sender = SerialSender()
-                serial_sender.send(input())
-                serial_sender.close()
-            except SerialException:
-                pass
-
-
-    
+ser.close()  # Close the serial connection
