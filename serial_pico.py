@@ -7,3 +7,4 @@ data_to_send = str(duty_cycle)  # Convert the duty cycle to a string
 ser.write(data_to_send.encode())  # Send the data over the serial connection
 
 ser.close()  # Close the serial connection
+
