@@ -18,7 +18,7 @@ This project demonstrates how to control the duty cycle of a PWM signal on a Ras
 1. write the code in the `main.py` file to your Raspberry Pi Pico using your preferred method (Thonny).
 2. On your laptop, ensure that the `serial` module is installed. You can install it using the following command:
    
-pip install pyserial
+$pip install pyserial
 
  
 ## Usage
@@ -26,7 +26,7 @@ pip install pyserial
 1. Open the `main.py` file on your Raspberry Pi Pico in a MicroPython editor and save it to the board.
 2. Run the `serial_pico.py` file on your laptop using Python:
 
-python serial_pico.py
+$python serial_pico.py
 
 3. The laptop will send the duty cycle value over the USB/UART connection to the Raspberry Pi Pico, which will adjust the PWM signal accordingly.
 4. Observe the connected LED or component to see the PWM control in action.
